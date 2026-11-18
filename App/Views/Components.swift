@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // MARK: - Formatting helpers
 
@@ -385,5 +386,23 @@ extension CompatLabeledContent where Content == Text {
     init(_ title: String, value: String) {
         self.title = title
         self.content = Text(value)
+    }
+}
+struct ActivityView: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(
+        context: Context
+    ) -> UIActivityViewController {
+        UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: nil
+        )
+    }
+
+    func updateUIViewController(
+        _ uiViewController: UIActivityViewController,
+        context: Context
+    ) {
     }
 }

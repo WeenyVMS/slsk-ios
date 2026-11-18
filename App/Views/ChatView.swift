@@ -5,7 +5,7 @@ struct ChatView: View {
     @State private var segment = 0
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(spacing: 0) {
                 Picker("Chat type", selection: $segment) {
                     Text("Rooms").tag(0)
@@ -25,6 +25,7 @@ struct ChatView: View {
             .slskScreen()
             .navigationTitle("Chat")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

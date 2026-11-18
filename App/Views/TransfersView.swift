@@ -5,7 +5,7 @@ struct TransfersView: View {
     @State private var segment = 0
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(spacing: 0) {
                 Picker("Direction", selection: $segment) {
                     Text("Downloads").tag(0)

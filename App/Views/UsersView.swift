@@ -46,10 +46,10 @@ struct UsersView: View {
                 }
 
                 Section {
-                    LabeledContent("Branch root", value: client.distributed.branchRoot ?? "—")
-                    LabeledContent("Branch level", value: "\(client.distributed.branchLevel)")
-                    LabeledContent("Parent", value: client.distributed.parentUsername ?? "none (branch root)")
-                    LabeledContent("Listen port", value: "\(client.listenPort)")
+                    CompatLabeledContent("Branch root", value: client.distributed.branchRoot ?? "—")
+                    CompatLabeledContent("Branch level", value: "\(client.distributed.branchLevel)")
+                    CompatLabeledContent("Parent", value: client.distributed.parentUsername ?? "none (branch root)")
+                    CompatLabeledContent("Listen port", value: "\(client.listenPort)")
                 } header: {
                     Text("Distributed network")
                 }

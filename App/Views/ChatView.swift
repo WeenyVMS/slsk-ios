@@ -420,8 +420,8 @@ struct MessageInput: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            TextField(placeholder, text: $text, axis: .vertical)
-                .lineLimit(1...4)
+            TextField(placeholder, text: $text)
+                .lineLimit(1)
                 .padding(8)
                 .background(Color(uiColor: .secondarySystemGroupedBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 12))

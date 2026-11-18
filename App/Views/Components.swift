@@ -196,7 +196,7 @@ struct BrowseSheet: View {
     @State private var selectedFolder: String?
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             Group {
                 if let session = client.browseSession(for: username), !session.folders.isEmpty {
                     List {
@@ -225,6 +225,7 @@ struct BrowseSheet: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
             if client.browseSession(for: username) == nil {
                 client.browseUser(username)

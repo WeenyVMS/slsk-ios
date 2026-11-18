@@ -73,7 +73,7 @@ struct SharesView: View {
     @State private var description = ""
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 Section {
                     HStack {

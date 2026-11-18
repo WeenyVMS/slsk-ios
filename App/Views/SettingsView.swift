@@ -13,7 +13,7 @@ struct SettingsView: View {
     @State private var showingConnectionLogShare = false
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             Form {
                 ThemeSettingsSection()
 

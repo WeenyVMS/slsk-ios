@@ -147,7 +147,7 @@ struct RoomMembersSheet: View {
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 Section("Tickers") {
                     ForEach(roomHolder.room.tickers, id: \.username) { ticker in
@@ -203,6 +203,7 @@ struct RoomMembersSheet: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

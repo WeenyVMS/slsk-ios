@@ -64,7 +64,7 @@ struct UserSheet: View {
     @State private var showBrowse = false
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 Section(username) {
                     if let info = client.users[username] {
@@ -87,9 +87,10 @@ struct UserSheet: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
 
                 Section("Message") {
-                    TextField("Private message", text: $message, axis: .vertical)
+                    TextField("Private message", text: $message)
                     Button("Send") {
                         client.sendMessage(to: username, message)
                         message = ""

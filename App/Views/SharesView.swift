@@ -77,8 +77,8 @@ struct SharesView: View {
             List {
                 Section {
                     HStack {
-                        LabeledContent("Files", value: "\(client.shares.sharedFileCount)")
-                        LabeledContent("Folders", value: "\(client.shares.sharedFolderCount)")
+                        CompatLabeledContent("Files", value: "\(client.shares.sharedFileCount)")
+                        CompatLabeledContent("Folders", value: "\(client.shares.sharedFolderCount)")
                     }
                     .font(.footnote)
                     if client.shares.isScanning {

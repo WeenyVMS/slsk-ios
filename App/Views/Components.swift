@@ -388,3 +388,22 @@ extension CompatLabeledContent where Content == Text {
         self.content = Text(value)
     }
 }
+struct ActivityView: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(
+        context: Context
+    ) -> UIActivityViewController {
+        UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: nil
+        )
+    }
+
+    func updateUIViewController(
+        _ uiViewController: UIActivityViewController,
+        context: Context
+    ) {
+        // Aucune mise à jour nécessaire
+    }
+}

@@ -359,3 +359,31 @@ struct TransferRow: View {
         .padding(.vertical, density.padding)
     }
 }
+struct CompatLabeledContent<Content: View>: View {
+    let title: String
+    let content: Content
+
+    init(_ title: String, @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.content = content()
+    }
+
+    var body: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 12) {
+            Text(title)
+
+            Spacer(minLength: 8)
+
+            content
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.trailing)
+        }
+    }
+}
+
+extension CompatLabeledContent where Content == Text {
+    init(_ title: String, value: String) {
+        self.title = title
+        self.content = Text(value)
+    }
+}

@@ -7,9 +7,10 @@ struct RootView: View {
     var body: some View {
         Group {
             if appState.needsLogin {
-                NavigationStack {
+                NavigationView {
                     LoginView()
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
             } else {
                 TabView {
                     SearchView()

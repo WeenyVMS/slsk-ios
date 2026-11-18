@@ -140,8 +140,11 @@ struct SharesView: View {
                 }
 
                 Section {
-                    TextField("Describe yourself / your shares", text: $description, axis: .vertical)
-                        .onSubmit(saveDescription)
+                    TextField(
+    "Describe yourself / your shares",
+    text: $description
+)
+.onSubmit(saveDescription)
                     Button("Save description") {
                         saveDescription()
                     }

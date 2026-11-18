@@ -10,7 +10,7 @@ struct SearchView: View {
     private static let groupPageSize = 50
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 ForEach(client.search.activeSessions, id: \.token) { session in
                     Section {
@@ -85,6 +85,7 @@ struct SearchView: View {
                 minBitrate = minimum == 0 ? "" : String(minimum)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     private var searchControls: some View {

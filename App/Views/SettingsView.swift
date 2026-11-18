@@ -18,8 +18,8 @@ struct SettingsView: View {
                 ThemeSettingsSection()
 
                 Section {
-                    LabeledContent("Username", value: client.config.username)
-                    LabeledContent("Status") {
+                    CompatLabeledContent("Username", value: client.config.username)
+                    CompatLabeledContent("Status") {
                         if case .loggedIn = client.connectionState {
                             Label("Connected", systemImage: "checkmark.circle.fill")
                                 .foregroundStyle(.green)
@@ -53,19 +53,19 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    LabeledContent("Server", value: "\(client.config.serverHost):\(client.config.serverPort)")
-                    LabeledContent("Listen port", value: "\(client.listenPort)")
+                    CompatLabeledContent("Server", value: "\(client.config.serverHost):\(client.config.serverPort)")
+                    CompatLabeledContent("Listen port", value: "\(client.listenPort)")
                     Toggle("Router port forwarding", isOn: Binding(
                         get: { client.config.enablePortMapping },
                         set: { client.setPortMappingEnabled($0) }
                     ))
-                    LabeledContent("Port forwarding") {
+                    CompatLabeledContent("Port forwarding") {
                         Text(client.portMappingStatus.label)
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.trailing)
                     }
-                    LabeledContent("Privileges remaining") {
+                    CompatLabeledContent("Privileges remaining") {
                         Text(privilegesText)
                     }
                 } header: {
@@ -83,7 +83,7 @@ struct SettingsView: View {
                         set: { client.setDownloadFolderName($0) }
                     ))
                     .disabled(!client.transfers.downloads.allSatisfy { $0.status == .finished || $0.status == .cancelled })
-                    LabeledContent("Download location") {
+                    CompatLabeledContent("Download location") {
                         Text("Files/\(client.config.downloadFolderName)")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
@@ -263,8 +263,8 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    LabeledContent("Version", value: "1.0")
-                    LabeledContent("Protocol") {
+                    CompatLabeledContent("Version", value: "1.0")
+                    CompatLabeledContent("Protocol") {
                         Text("Soulseek (Nicotine+ compatible)")
                             .font(.footnote)
                     }

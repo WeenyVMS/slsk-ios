@@ -10,6 +10,7 @@ struct SettingsView: View {
     @State private var uploadSlots = "2"
     @State private var listenPort = "2234"
     @State private var copiedLog = false
+    @State private var showingConnectionLogShare = false
 
     var body: some View {
         NavigationStack {
@@ -101,10 +102,19 @@ struct SettingsView: View {
                         Label(copiedLog ? "Connection log copied" : "Copy connection log", systemImage: "doc.on.doc")
                     }
                     .disabled(client.connectionDiagnostics.isEmpty)
-                    ShareLink(item: client.connectionDiagnostics.joined(separator: "\n")) {
-                        Label("Share connection log", systemImage: "square.and.arrow.up")
-                    }
-                    .disabled(client.connectionDiagnostics.isEmpty)
+                    Button {
+    showingConnectionLogShare = true
+} label: {
+    Label("Share connection log", systemImage: "square.and.arrow.up")
+}
+.disabled(client.connectionDiagnostics.isEmpty)
+.sheet(isPresented: $showingConnectionLogShare) {
+    ActivityView(
+        activityItems: [
+            client.connectionDiagnostics.joined(separator: "\n")
+        ]
+    )
+}
                     Button("Clear connection log") {
                         client.clearConnectionDiagnostics()
                         copiedLog = false

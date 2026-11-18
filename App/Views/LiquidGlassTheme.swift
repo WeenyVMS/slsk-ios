@@ -66,9 +66,21 @@ private struct SlskGlassButton: ViewModifier {
 }
 
 extension View {
-    func slskScreen() -> some View {
-        scrollContentBackground(.hidden).background { SlskBackdrop() }
+    @ViewBuilder
+func slskScreen() -> some View {
+    if #available(iOS 16.0, *) {
+        self
+            .scrollContentBackground(.hidden)
+            .background {
+                SlskBackdrop()
+            }
+    } else {
+        self
+            .background {
+                SlskBackdrop()
+            }
     }
+}
 
     func slskGlassSurface(cornerRadius: CGFloat = 24) -> some View {
         modifier(SlskGlassSurface(cornerRadius: cornerRadius))

@@ -6,7 +6,7 @@ struct UsersView: View {
     @State private var selectedUser: String?
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 Section("Add buddy") {
                     HStack {
